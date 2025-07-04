@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize('railway', 'root', 'VMrHAElWQVamgLPXqepENaXMegcAwxIW', {
-  host: 'mysql-gf6d.railway.internalt',
+  host: 'mysql-gf6d.railway.internal',
   dialect: 'mysql'
 });
 
