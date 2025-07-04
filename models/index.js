@@ -1,23 +1,16 @@
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASS,
-  {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: 'mysql',
-  }
-);
+const { Sequelize } = require('sequelize');
+
 
 const sequelize = new Sequelize('railway', 'root', 'VMrHAElWQVamgLPXqepENaXMegcAwxIW', {
-  host: 'mysql-gf6d.railway.internal',
-  dialect: 'mysql'
+  host: 'switchyard.proxy.rlwy.net',
+  port: 12623,
+  dialect: 'mysql',
+  logging: false,
 });
 
 const Review = require('./review')(sequelize);
 
-// Recreate tables on each restart (FOR DEVELOPMENT ONLY)
-sequelize.sync(); // This will not delete existing data
 
+sequelize.sync(); // Keep this for syncing
 
 module.exports = { sequelize, Review };
