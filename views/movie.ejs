@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= movie.title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <a href="/">← Back</a>
+  <h1><%= movie.title %></h1>
+  <p><%= movie.summary %></p>
+
+  <h2>Reviews</h2>
+  <% movie.Reviews.forEach(review => { %>
+    <div>
+      <strong><%= review.reviewer %></strong> - <%= review.rating %>/5
+      <p><%= review.comment %></p>
+    </div>
+  <% }); %>
+
+  <h3>Add a Review</h3>
+  <form action="/movie/<%= movie.id %>/review" method="POST">
+    <input name="reviewer" placeholder="Your Name" required>
+    <textarea name="comment" placeholder="Your Review" required></textarea>
+    <input name="rating" type="number" min="1" max="5" required>
+    <button type="submit">Submit Review</button>
+  </form>
+</body>
+</html>

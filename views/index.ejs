@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rate It All - Movie & Book Review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .form-section {
+      background: #ffffff15;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-control, .form-select {
+      border-radius: 10px;
+    }
+
+    .card {
+      background-color: #ffffff12;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      margin-top: 60px;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 20px 0;
+      text-align: center;
+      color: #ddd;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #00bcd4;
+    }
+
+    /* Mobile View Enhancements */
+    @media (max-width: 576px) {
+      .form-section {
+        padding: 20px 15px;
+      }
+
+      .card {
+        padding: 1rem !important;
+      }
+
+      h1, h4 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      button.btn {
+        width: 100%;
+      }
+
+      .social-icons a {
+        font-size: 1.3rem;
+        margin: 0 8px;
+      }
+
+      .text-end {
+        text-align: left !important;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <h1 class="text-center mb-4">⭐ Rate It All</h1>
+
+  <div class="form-section">
+    <h4 class="mb-4">Submit Your Review</h4>
+    <form action="/add-review" method="POST" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Select Category</label>
+        <select name="category" class="form-select" required>
+          <option value="">Choose...</option>
+          <option>Movie</option>
+          <option>Book</option>
+          <option>Novel</option>
+          <option>Story</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" placeholder="Enter name" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Author / Director</label>
+        <input type="text" name="author" class="form-control" placeholder="Enter author or director name" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Rating (1–5,  Where 1 is bad and 5 is Good)</label>
+        <input type="number" name="rating" class="form-control" min="1" max="5" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Feedback</label>
+        <textarea name="feedback" class="form-control" placeholder="Share your experience..." rows="4" required></textarea>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Your Name</label>
+        <input type="text" name="reviewer" class="form-control" placeholder="Reviewer name" required>
+      </div>
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-warning px-4">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <% if (reviews && reviews.length > 0) { %>
+    <h3 class="mb-3">📦 Latest Reviews</h3>
+    <div class="row g-4">
+      <% reviews.forEach(r => { %>
+        <div class="col-md-6">
+          <div class="card p-4">
+            <h5>
+              <strong><%= r.title %></strong>
+              <small style="color: white;">(<%= r.category %>)</small>
+            </h5>
+            <p class="mb-1"><i>By <%= r.author %></i></p>
+            <p>⭐ <strong><%= r.rating %>/5</strong></p>
+            <p><%= r.feedback %></p>
+            <div class="text-end text-info">— <%= r.reviewer %></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<footer>
+  <p>© 2025 Created by Arghya Ghoshal. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="mailto:arghyaghoshal44@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://wa.me/916291561585"><i class="fab fa-whatsapp"></i></a>
+<a href="https://www.instagram.com/aaarg.hyaaa//"><i class="fab fa-instagram"></i></a>
+<a href="https://www.instagram.com/aaarg.hyaaa/?utm_source=ig_web_button_share_sheet"><i class="fab fa-linkedin"></i></a>
+
+  </div>
+</footer>
+
+</body>
+</html>

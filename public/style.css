@@ -1,0 +1,17 @@
+body {
+  font-family: Arial;
+  margin: 20px;
+  padding: 0;
+  background: #f4f4f4;
+}
+h1, h2 {
+  color: #333;
+}
+form {
+  margin-top: 15px;
+}
+input, textarea {
+  display: block;
+  width: 300px;
+  margin-bottom: 10px;
+}
